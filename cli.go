@@ -2,9 +2,8 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"strconv"
 	"github.com/spf13/cobra"
+	"os"
 )
 
 const long_description = "lcdl is a cli tool to download and execute leetcode problems offline and in your own IDE. use -h for usage help"
@@ -48,15 +47,15 @@ var checkCmd = &cobra.Command{
 }
 
 var getCmd = &cobra.Command{
-	Use: "get",
+	Use:   "get",
 	Short: "Downloads solutions for offline use.",
-	Long: "Download solutions for offline use with an arbitrary amount of problems i.e lcdl get 1 2 3",
-	Args: cobra.MinimumNArgs(1),
+	Long:  "Download solutions for offline use with an arbitrary amount of problems i.e lcdl get 1 2 3",
+	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		_, err := ConvertArgsToInts(args)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Error converting arguments: %v\n", err)
-            os.Exit(1)
+			os.Exit(1)
 		}
 
 	},
